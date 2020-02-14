@@ -6,13 +6,13 @@ val list = collection.mutable.ListBuffer("red","white","black")
 val list = List("red","white","black")
 
 // 2. Add 5 more items to "list" "green", "yellow", "blue", "orange", "pearl"
-        //Opción 1 
+        //Option 1 
 list += "green"
 list +="yellow"
 list +="blue"
 list +="orange"
 list += "pearl"
-        //Opcion 2
+        //Option 2
 val list2 = "green" ::"yellow" :: "blue" :: "orange" :: "pearl" :: list
 
 // 3. Bring the elements of "list" "green", "yellow", "blue"
