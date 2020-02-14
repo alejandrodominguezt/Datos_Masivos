@@ -1,4 +1,8 @@
+# PRACTICES (Description)
+### Domínguez Tabardillo David Alejandro 15211698
+### Saúl Soto Pino 1521
 
+## Practice 1 
 **// Assessment 1/Practice 1**
 
 //1. Develop an algorithm in scala that calculates the radius of a circle
@@ -42,6 +46,7 @@ println(s"I am writing a $bird")
 
 //6. 
 
+## Practice 2 
 **//Assessment 1/ Practice 2**
 // 1. Create a list called "list" with the elements "red", "white", "black"
         *// Option 1  Using ListBuffer helps to list according to the order in which the elements are added.*
