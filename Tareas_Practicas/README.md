@@ -89,19 +89,19 @@ val list = List(1,3,3,4,6,7,3,7)
 list.toSet
 
 
-
-
 // 6. Create a mutable map called names that contains the following "Jose", 20, "Luis", 24, "Ana", 23, "Susana", "27"
 
+val mymap = collection.mutable.Map(("Jose",20),("Luis",24),("Ana",23),("Susana",27)); //define a mymap variable as a mutable collection and assign a list of key values to it.
 
 
+// 6a. Show the keys of the map
 
-// 6 a .
+mymap.keys // Display all the keys of the map without the values
 
 
+// 7b. Add the value ("Miguel",23) to the map
 
-
-// 7 b .
+mymap += ("Miguel" -> 23) // Adding one element to the map using the += syntax
 
 
 
