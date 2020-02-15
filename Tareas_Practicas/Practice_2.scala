@@ -30,7 +30,8 @@ val list = List(1,3,3,4,6,7,3,7)
 list.toSet
 
 // 6. Create a mutable map called names that contains the following "Jose", 20, "Luis", 24, "Ana", 23, "Susana", "27"
-
-// 6 a .
-
-// 7 b .
+val mymap = collection.mutable.Map(("Jose",20),("Luis",24),("Ana",23),("Susana",27));
+// 6a. Show the keys of the map
+mymap.keys
+// 7b. Add the value ("Miguel",23) to the map
+mymap += ("Miguel" -> 23)
