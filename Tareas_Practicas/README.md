@@ -41,10 +41,15 @@ println(s"I am writing a $bird")
 //4. Given the variable message = "Hi Luke, I'm your father!" use slice to extract the sequence "Luke"
 
 
+
 //5.
 
 
+
 //6. 
+
+
+
 
 ## Practice 2 
 **//Assessment 1/ Practice 2**
@@ -80,8 +85,109 @@ Array.range(1, 1000,5)
 val list = List(1,3,3,4,6,7,3,7)
 list.toSet
 
+
+
+
 // 6. Create a mutable map called names that contains the following "Jose", 20, "Luis", 24, "Ana", 23, "Susana", "27"
+
+
+
 
 // 6 a .
 
+
+
+
 // 7 b .
+
+
+
+
+## Practice 3 
+**// Assessment 1/Practice 3**
+
+// Method 1
+
+object Fibonacci{
+
+  // Case 1: Pattern Matching
+  // Well suited for small numbers
+  // If n is big, throws Stack Overflow
+// Gets really slow for n > 40 approx.
+  
+  def fib1(n: Int): Int = n match {
+    case 0 | 1 => n
+    case _ => fib1(n - 1) + fib1(n - 2)
+  }
+  fib1(5)
+  
+  
+  
+ 
+ // Method 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Method 3
+  
+  /*
+    Case 3: Tail Recursion
+    Optimized by compiler
+   */
+  
+  def fib3(n: Int): Int = {
+    def fib_tail(n: Int, a: Int, b: Int): Int = n match {
+      case 0 => a
+      case _ => fib_tail(n - 1, b, a + b)
+    }  
+    return fib_tail(n, 0 , 1)
+  }
+  fib3(21)
+  
+
+
+
+
+  // Method 4
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // Method 5
+
+  /*
+    Pisano period
+    Get last 6 digits of Fibonacci with tail recursion
+   */
+  
+  def fib5( n : Int) : Int = { 
+    def fib_tail( n: Int, a:Int, b:Int): Int = n match {
+      case 0 => a 
+      case _ => fib_tail( n-1, b, (a+b)%1000000 )
+    }
+    return fib_tail( n%1500000, 0, 1)
+  }
+}
+
+fib5(8)
