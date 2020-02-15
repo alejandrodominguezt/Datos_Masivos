@@ -30,11 +30,13 @@ var bird = "tweet"
 println(s"I am writing a $bird") 
 
 //4. Given the variable message = "Hi Luke, I'm your father!" use slice to extract the sequence "Luke"
+var starWars = "Hola Luke yo soy tu padre!"
+println(starWars.slice(5,9))
 
+//5.What's the difference between Value and Variable
+println("val defines a constant, a fixed value which cannot be modified once declared and assigned while var defines a variable, which can be modified or reassigned.")
 
-//5.
-
-
-//6. 
-
+//6. Given the tuple ((2,4,5),(1,2,3),(3.1416,23))) return the number 3.1416 
+val my_tuple = ((2,4,5),(1,2,3),(3.1416,23));
+my_tuple._3._1
 
