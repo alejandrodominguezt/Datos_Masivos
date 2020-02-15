@@ -125,23 +125,25 @@ object Fibonacci{
   fib1(5)
   
   
-  
  
  // Method 2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ //This method gets the number in the n position of the fibonacci sequence
+def fib2(n: Int): Int = {
+    
+    var first = 0
+    var second = 1
+    var count = 0
+    
+    while(count < n){
+      val sum = first + second
+      first = second
+      second = sum
+      count = count + 1
+    }
+    
+    return first
+  }
+  fib2(18)
 
 
   // Method 3
@@ -160,21 +162,18 @@ object Fibonacci{
   }
   fib3(21)
   
-
-
-
-
-  // Method 4
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    // Method 4
+    //Using the binet's formula you get the number in n position of the fibonacci sequence
+  def fib4(num: Int): Double = {
+    if(num < 2){
+        return num; 
+    }else{
+        var i = ((1 + math.sqrt(5))/2);
+        var j = ((math.pow(i,num)) - (math.pow((1-i),num)))/ math.sqrt(5);
+        return j;
+    }
+}
+fibFormula(5) 
   
   
   // Method 5
