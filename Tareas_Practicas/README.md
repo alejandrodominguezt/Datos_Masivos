@@ -1,6 +1,6 @@
 # PRACTICES (Description)
 ### Domínguez Tabardillo David Alejandro 15211698
-### Saúl Soto Pino 1521
+### Saúl Soto Pino 15211705
 
 ## Practice 1 
 **// Assessment 1/Practice 1**
@@ -39,14 +39,17 @@ var bird = "tweet"
 println(s"I am writing a $bird") 
 
 //4. Given the variable message = "Hi Luke, I'm your father!" use slice to extract the sequence "Luke"
+var starWars = "Hola Luke yo soy tu padre!" //Declare the starWars variable and assign a value
+println(starWars.slice(5,9)) //using the method slice you take a start and end index to return a new collection
 
+//5.What's the difference between Value and Variable
+println("val defines a constant, a fixed value which cannot be modified once declared and assigned while var defines a variable, which can be modified or reassigned.")
+//I just googled the difference(:
 
+//6. Given the tuple ((2,4,5),(1,2,3),(3.1416,23))) return the number 3.1416 
+val my_tuple = ((2,4,5),(1,2,3),(3.1416,23));//In Scala you can define a tuple with tuples inside of it.
+my_tuple._3._1 // Using this syntax ._ you select the third value inside my_tuple and the first value inside of that aswell.
 
-//5.
-
-
-
-//6. 
 
 
 
