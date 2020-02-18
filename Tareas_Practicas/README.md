@@ -1,10 +1,21 @@
-# PRACTICES (Description)
+# PRACTICES UNIT 1 (Description)
 ### Domínguez Tabardillo David Alejandro 15211698
 ### Saúl Soto Pino 15211705
 
-## Practice 1 
-**// Assessment 1/Practice 1**
+**INDEX**
 
+* [1.-Assessment 1/Practice 1](#item1)
+* [2.-Practice 2 ](#item2)
+* [3.- Assessment 1/Practice 3](item3)
+
+<a name="item1"></a>
+
+**Assessment 1/Practice 1:**
+
+## Practice 1 
+
+
+```
 //1. Develop an algorithm in scala that calculates the radius of a circle
 *// User enters diameter data. Radio is the double the diameter diameter is divided between two.*
 
@@ -51,11 +62,17 @@ val my_tuple = ((2,4,5),(1,2,3),(3.1416,23));//In Scala you can define a tuple w
 my_tuple._3._1 // Using this syntax ._ you select the third value inside my_tuple and the first value inside of that aswell.
 
 
+```
 
 
+<a name="item2"></a>
+
+**Assessment 1/Practice 2:**
 
 ## Practice 2 
-**//Assessment 1/ Practice 2**
+
+```
+
 // 1. Create a list called "list" with the elements "red", "white", "black"
         *// Option 1  Using ListBuffer helps to list according to the order in which the elements are added.*
 val list = collection.mutable.ListBuffer("red","white","black")
@@ -104,11 +121,15 @@ mymap.keys // Display all the keys of the map without the values
 mymap += ("Miguel" -> 23) // Adding one element to the map using the += syntax
 
 
+```
 
+<a name="item3"></a>
+
+**Assessment 1/Practice 3:**
 
 ## Practice 3 
-**// Assessment 1/Practice 3**
 
+```
 // Method 1
 
 object Fibonacci{
