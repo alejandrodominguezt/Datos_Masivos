@@ -4,9 +4,9 @@
 
 **INDEX**
 
-* [1.-Assessment 1/Practice 1](#item1)
+* [1.-Practice 1](#item1)
 * [2.-Practice 2 ](#item2)
-* [3.- Assessment 1/Practice 3](item3)
+* [3.-Practice 3](item3)
 
 <a name="item1"></a>
 
