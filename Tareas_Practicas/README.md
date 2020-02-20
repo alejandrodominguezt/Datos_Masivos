@@ -214,3 +214,79 @@ fibFormula(5)
 }
 
 fib5(8)
+
+```
+
+
+<a name="item4"></a>
+
+**Assessment 1/Practice 4:**
+
+## Practice 4
+
+```
+// 20 functions
+// Example: df.select(corr("High", "Low")).show()
+
+// The static steps for DataFrames are import session, get value spark and df from the archive csv
+
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession.builder().getOrCreate()
+
+val df = spark.read.option("header", "true").option("inferSchema","true")csv("CitiGroup2006_2008")
+
+// Then can test the functios, like "select", "filter" and others, take a specific column or value like in SQL but in this case especificly with scala syntax
+
+//1
+df.select("Low").show()
+
+//2
+df.count()
+
+//3
+df.describe()
+
+//4
+df.filter($"Open" < 470 && $"Close" < 470).show()
+
+//5
+df.select(mean("Low")).show()
+
+//6
+df.select(max("High")).show()
+
+//7
+df.select(min("High")).show()
+
+//8
+df.select(month(df("Date"))).show()
+
+//9
+df.select(year(df("Date"))).show()
+
+//10
+df.filter($"Low"===482.7).show()
+
+//11
+
+//12
+
+//13
+
+//14
+
+//15
+
+//16
+
+//17
+
+//18
+
+//19
+
+//20
+
+
+```
