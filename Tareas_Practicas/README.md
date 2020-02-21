@@ -269,25 +269,36 @@ df.select(year(df("Date"))).show()
 //10
 df.filter($"Low"===482.7).show()
 
-//11
+val df = spark.read.option("header", "true").option("inferSchema","true")csv("Sales.csv")
 
-//12
+//11.- Agrupa y cuenta los valores diferentes de la columna “Company”
+df.select(approx_count_distinct("Company")).show()
 
-//13
+//12.- Muestra las compañias que se repiten
+df.select(collect_set("Company")).show()
 
-//14
+//13.-Muestra la suma de los valores de la columna “Sales”
+df.select(sum("Sales")).show()
 
-//15
+//14.-Muestra el numero binario de la tabla “open”
+df.select(bin("open")).show()
 
-//16
+//15.-Agrupa  por max y compañia
+df.groupBy("Company").agg(max("Sales")).show()
 
-//17
+//16.-Agrupa por minimos de compañia
+df.groupBy("Company").agg(min("Sales")).show()
 
-//18
+//17.-Agrupa por promedios de compañia 
+df.groupBy("Company").agg(avg("Sales")).show()
 
-//19
+//18.-Otra manera de mostrar los minimos
+df.groupBy($"Company").min().show
 
-//20
+//19.-Otra manera de mostrar los maximos
+df.groupBy($"Company").max().show
 
+//20.-Mustra los promedios
+df.groupBy($"Company").avg().show
 
 ```
