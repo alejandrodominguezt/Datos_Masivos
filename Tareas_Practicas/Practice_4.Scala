@@ -39,23 +39,34 @@ df.select(year(df("Date"))).show()
 //10
 df.filter($"Low"===482.7).show()
 
+val df = spark.read.option("header", "true").option("inferSchema","true")csv("Sales.csv")
+
 //11
+df.select(approx_count_distinct("Company")).show()
 
 //12
+df.select(collect_set("Company")).show()
 
 //13
+df.select(sum("Sales")).show()
 
 //14
+df.select(bin("open")).show()
 
 //15
+df.groupBy("Company").agg(max("Sales")).show()
 
 //16
+df.groupBy("Company").agg(min("Sales")).show()
 
-//17
+//17 
+df.groupBy("Company").agg(avg("Sales")).show()
 
 //18
+df.groupBy($"Company").min().show
 
 //19
+df.groupBy($"Company").max().show
 
 //20
-
+df.groupBy($"Company").avg().show
