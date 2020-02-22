@@ -1,15 +1,27 @@
 
-//Evaluacion1
+// Evaluación 1
+// Domínguez Tabardillo David Alejandro
+// Soto Pino Saúl
 
-val arr = Array((11,2,4),(4,5,6),(10,8,-12));
 
-def diagonalDifference(array:Array[Int]):Int={
-    val sub1 = arr.head;
-    val d1d1 = sub1._1;
-    val sub2 = arr.tail;
-    val sub3 = sub2.head;
-    val d2d1 = sub3._2;
-    val sub4 = sub2.tail;
-    val d3d1 = sub4._3;
+val arr = Array(Array(11,2,4),Array(4,5,6),Array(10,8,-12));
 
-}
+def diagonalDifference(arr:Array[Array[Int]], n:Int, rightSide:Boolean, leftSide: Boolean):Int=
+{
+    var sum:Int=0
+   if (rightSide){
+       for(i<-Range(0,n))
+       {
+           sum = sum + arr(i)(i)
+       }
+   }
+   var sum2:Int=0
+   if (leftSide){
+       for(i <- Range(0,n)){
+           sum2 = sum2 + arr(i)((n-1)-i)
+       }
+   }
+  
+   return Math.abs(sum - sum2)
+  } 
+diagonalDifference(arr,3,true, true)
