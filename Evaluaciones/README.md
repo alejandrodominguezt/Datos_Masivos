@@ -1,12 +1,27 @@
-# Evaluación 1
+# Evaluation 1
 **Domínguez Tabardillo David Alejandro - 15211698** 
 
  **Soto Pino Saúl - 1521____**
 
-Instructions:
+
+### INSTRUCCIONES
+
+Dada una matriz cuadrada, calcule la diferencia absoluta entre las sumas de sus diagonales.
+Por ejemplo, la matriz cuadrada se muestra a continuación:
+**arr** [[11, 2, 4],[4, 5, 6], [10, 8, -12]]
+**diagonal_1** = 11 + 5 -12 = 4
+**diagonal_2**  = 4 + 5 + 10 = 19
+**Diferencia Absoluta** = | 4 -19 | = 15
+	
+### FUNCIÓN DESCRIPTIVA
+*Desarrollar una función llamada diagonalDifference en un scrip con el lenguaje de programación Scala. Esta debe devolver un número entero que represente la diferencia de la diagonal absoluta*
+
+diagonalDifference toma el siguiente parámetro:
+
+arr
 
 
-
+### DESARROLLO
 
 *Se creó el arreglo usado de ejemplo*
 ```
