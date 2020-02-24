@@ -1,13 +1,13 @@
 # Evaluation 1
 **Domínguez Tabardillo David Alejandro - 15211698** 
 
- **Soto Pino Saúl - 1521____**
+ **Soto Pino Saúl - 15211705**
 
 
-### INSTRUCCIONES
+### INSTRUCCIONS
 
-Dada una matriz cuadrada, calcule la diferencia absoluta entre las sumas de sus diagonales.
-Por ejemplo, la matriz cuadrada se muestra a continuación:
+Given a square matrix, calculate the absolute difference between the sums of your diagonals.
+For example, the square matrix is ​​shown below:
 
 **arr** [[11, 2, 4],[4, 5, 6], [10, 8, -12]]
 
@@ -15,39 +15,39 @@ Por ejemplo, la matriz cuadrada se muestra a continuación:
 
 **diagonal_2**  = 4 + 5 + 10 = 19
 
-**Diferencia Absoluta** = | 4 -19 | = 15
+**Absolute difference** = | 4 -19 | = 15
 	
-### FUNCIÓN DESCRIPTIVA
+### DESCRIPTIVE FUNCTION
 
-*Desarrollar una función llamada diagonalDifference en un scrip con el lenguaje de programación Scala. Esta debe devolver un número entero que represente la diferencia de la diagonal absoluta*
+*Develop a function called Diagonal Difference in a script with the Scala programming language. This must return an integer that represents the difference of the absolute diagonal*
 
-diagonalDifference toma el siguiente parámetro:
+diagonalDifference takes the following parameter:
 
 arr
 
 
-### DESARROLLO
+### DEVELOPMENT
 
-*Se creó el arreglo usado de ejemplo*
+*We created the matrix using the example*
 ```
 val arr = Array(Array(11,2,4),Array(4,5,6),Array(10,8,-12));
 ```
-*Se definió la función "diagonalDifference" que recibe el arreglo ejemplo, n y los valores booleanos de acuerdo a la diagonal*
+*We created the "diagonalDifference" function that receives the example array, n and the Boolean values according to the diagonal*
 
 ```
 def diagonalDifference(arr:Array[Array[Int]], n:Int, diagonal_1:Boolean, diagonal_2: Boolean):Int=
 {
 
 ```
-* Se declaró la variable sum que guardará el recorrido del arreglo ejemplo sumando la diagonal 1*
+* The sum variable was declared that will keep the path of the example array by adding the diagonal 1*
 ```
     var sum:Int=0
 ```
-*Se condicionó la diagonal 1, que recibe el parámetro booleano de la función diagonalDifference*
+*We created a conditional for diagonal 1, that recieves the boolean paratemer from the diagonalDifference function*
 ```
    if (diagonal_1){
  ```
- *Se usó un ciclo for para recorrer el arreglo ejemplo y con Range obtener la secuencia ordenada de enteros que están igualmente espaciados en la diagonal 1, la variable sum va guardando los elementos obtenidos de la matriz.*
+ *A for cycle was used to traverse the example array and with Range to obtain the ordered sequence of integers that are equally spaced on diagonal 1, the sum variable keeps the elements obtained from the matrix.*
  ```
        for(i<-Range(0,n))
        {
@@ -55,27 +55,27 @@ def diagonalDifference(arr:Array[Array[Int]], n:Int, diagonal_1:Boolean, diagona
        }
    }
    ```
-*Se declaró la variable sum que guardará el recorrido del arreglo ejemplo sumando la diagonal 2*
+*The sum2 variable was declared that will keep the path of the example array by adding the diagonal 2*
    ```
    var sum2:Int=0
    ```
- *Se condicionó la diagonal 2, que recibe el parámetro booleano de la función diagonalDifference* 
+ *We created a conditional for diagonal 2, that recieves the boolean paratemer from the diagonalDifference function* 
  ```
    if (diagonal_2){
  ```
- *Se usó un ciclo for para recorrer el arreglo ejemplo y con Range obtener la secuencia ordenada de enteros que están igualmente espaciados en la diagonal 2, la variable sum va guardando los elementos obtenidos de la matriz.*
+ *A for cycle was used to traverse the example array and with Range to obtain the ordered sequence of integers that are equally spaced on diagonal 2, the sum2 variable keeps the elements obtained from the matrix.*
  ```
        for(i <- Range(0,n)){
            sum2 = sum2 + arr(i)((n-1)-i)
        }
    }
  ```
-  *Retornamos la **diferencia absoluta** utilizando la función Math.abs de la resta de las variables que guardaron la suma de las diagonales*
+  *We return the ** absolute difference ** using the Math.abs function of the subtraction of the variables that saved the sum of the diagonals*
  ```
    return Math.abs(sum - sum2)
   } 
  ```
- *Finalmente se manda a llamar a la función diagonalDifference y se le mandan como parámetros: el arreglo ejemplo "arr", el valor de la longitud de la matriz "n" y los valores booleanos true para ambas diagonales*
+ *Finally, the diagonalDifference function is called and sent as parameters: the example array "arr", the value of the length of the matrix "n" and the Boolean values true for both diagonals*
   ```
 diagonalDifference(arr,3,true, true)
 
