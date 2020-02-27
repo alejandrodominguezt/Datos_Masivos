@@ -8,6 +8,7 @@
 * [2.-Practice 2 ](#item2)
 * [3.-Practice 3](#item3)
 * [4.-Practice 4](#item4)
+* [4.-Practice 5](#item5)
 
 <a name="item1"></a>
 
@@ -302,3 +303,59 @@ df.groupBy($"Company").max().show
 df.groupBy($"Company").avg().show
 
 ```
+
+<a name="item5"></a>
+**Assessment 1/Practice 5:**
+
+## Practice 5
+15 Aggregation Functions
+
+```
+Examples
+df.select(countDistinct("Sales")).show()
+
+df.select(sumDistinct("Sales")).show()
+
+df.select(variance("Sales")).show()
+
+df.select(stddev("Sales")).show()
+
+df.select(collect_set("Sales")).show()
+```
+1. Returns the approximate number of different elements in a group.
+``` df.select(approx_count_distinct("Sales")).show() ```
+
+2.Returns the average of the values in a group
+``` df.select(avg("Sales")).show() ```
+
+3. Returns a list of objects with duplicates.
+```df.select(collect_list("Sales")).show() ```
+
+4. Returns a set of objects with duplicate items removed.
+```df.select(collect_set("Sales")).show()```
+
+5. Returns the first value in a group.
+```df.select(first("Sales")).show()```
+
+6. Returns the kurtosis of the values in a group.
+```df.select(kurtosis("Sales")).show()```
+
+7. Returns the last value in a group.
+```df.select(last("Sales")).show()```
+
+8. Returns the bias of the values in a group.
+```df.select(skewness("Sales")).show()```
+
+9.
+
+10.
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
