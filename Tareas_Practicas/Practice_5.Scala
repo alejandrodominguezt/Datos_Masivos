@@ -24,16 +24,23 @@ df.select(last("Sales")).show()
 // 8 
 df.select(skewness("Sales")).show()
 
-// 9
+//9
+df.select(bin("open")).show()
 
-// 10
+//10
+df.groupBy("Company").agg(max("Sales")).show()
 
-// 11
+//11
+df.groupBy("Company").agg(min("Sales")).show()
 
-// 12
+//12 
+df.groupBy("Company").agg(avg("Sales")).show()
 
-// 13
+//13
+df.groupBy($"Company").min().show
 
-// 14
+//14
+df.groupBy($"Company").max().show
 
-// 15
+//15
+df.groupBy($"Company").avg().show
