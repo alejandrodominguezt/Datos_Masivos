@@ -270,37 +270,36 @@ df.select(year(df("Date"))).show()
 //10
 df.filter($"Low"===482.7).show()
 
-val df = spark.read.option("header", "true").option("inferSchema","true")csv("Sales.csv")
+//11
+df.head(5)
 
-//11.- Agrupa y cuenta los valores diferentes de la columna “Company”
-df.select(approx_count_distinct("Company")).show()
+//12
+df.select(avg("Close")).show()
 
-//12.- Muestra las compañias que se repiten
-df.select(collect_set("Company")).show()
+//13
+df.first()
 
-//13.-Muestra la suma de los valores de la columna “Sales”
-df.select(sum("Sales")).show()
+//14
+df.last()
 
-//14.-Muestra el numero binario de la tabla “open”
-df.select(bin("open")).show()
+//15
+df.select(sum("High")).show()
 
-//15.-Agrupa  por max y compañia
-df.groupBy("Company").agg(max("Sales")).show()
+//16
+df.select(variance("High")).show()
 
-//16.-Agrupa por minimos de compañia
-df.groupBy("Company").agg(min("Sales")).show()
+//17
+df.select(kurtosis("High")).show()
 
-//17.-Agrupa por promedios de compañia 
-df.groupBy("Company").agg(avg("Sales")).show()
+//18
+df.select(bin("High")).show()
 
-//18.-Otra manera de mostrar los minimos
-df.groupBy($"Company").min().show
+//19
+df.groupBy("Low").agg(max("Low")).show()
 
-//19.-Otra manera de mostrar los maximos
-df.groupBy($"Company").max().show
+//20
+df.select(collect_list("High")).show()
 
-//20.-Mustra los promedios
-df.groupBy($"Company").avg().show
 
 ```
 
@@ -346,16 +345,23 @@ df.select(collect_set("Sales")).show()
 8. Returns the bias of the values in a group.
 ```df.select(skewness("Sales")).show()```
 
-9.
+9.Returns the binary number of the open column.
+```df.select(bin("open")).show()```
 
-10.
+10.Groups the data by max and company
+```df.groupBy("Company").agg(max("Sales")).show()```
 
-11.
+11.Groups the data by the company minimun
+```df.groupBy("Company").agg(min("Sales")).show()```
 
-12.
+12.Groups the data by the company average 
+```df.groupBy("Company").agg(avg("Sales")).show()```
 
-13.
+13.Another way to show the minimum
+```df.groupBy($"Company").min().show```
 
-14.
+14.Another way to show the maximum
+```df.groupBy($"Company").max().show```
 
-15.
+15.Another way to show the average
+```df.groupBy($"Company").avg().show```
