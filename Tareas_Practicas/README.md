@@ -8,7 +8,9 @@
 * [2.-Practice 2 ](#item2)
 * [3.-Practice 3](#item3)
 * [4.-Practice 4](#item4)
-* [4.-Practice 5](#item5)
+* [5.-Practice 5](#item5)
+* [6.-Investigation 1](#item6)
+* [7.-Investigation_2](#item7)
 
 <a name="item1"></a>
 
@@ -365,3 +367,38 @@ df.select(collect_set("Sales")).show()
 
 15.Another way to show the average
 ```df.groupBy($"Company").avg().show```
+
+
+<a name="item6"></a>
+
+**Assessment 1/Investigation 1:**
+
+## Pearson correlation
+
+The Pearson correlation coefficient, designed for quantitative variables (minimum interval scale), is an index that measures the degree of covariation between different linearly related variables. Note that we say "linearly related variables." This means that there may be strongly related variables, but not linearly, in which case it will not proceed to Pearson's correlation. For example, the relationship between anxiety and performance has an inverted U shape; Similarly, if we relate population and time, the relationship will be exponentially.
+In these cases (and many others) it is not convenient to use Pearson's correlation. We insist on this point, which seems to be forgotten with some frequency.
+The Pearson correlation coefficient is an index of easy execution and, also, of easy interpretation. Let's say, in the first instance, that its absolute values ​​range between 0 and 1. That is, if we have two variables X and Y, and we define the Pearson correlation coefficient between these two variables as x and r then:
+```
+0 ≤ rxy ≤ 1
+```
+We have specified the terms "absolute values" since in fact if you look at the sign, Pearson's correlation coefficient ranges from –1 to +1. However, it should be noted that the magnitude of the relationship is specified by the numerical value of the coefficient, reflecting the direction sign of that value.
+
+Source: https://personal.us.es/vararey/adatos2/correlacion.pdf
+
+<a name="item7"></a>
+
+**Assessment 1/Investigation 2:**
+
+## Variance
+
+Variance is a measure of dispersion that represents the variability of a series of data with respect to its mean. Formally it is calculated as the sum of squared residues divided by the total observations.
+
+It can also be calculated as the standard deviation squared. Incidentally, we understand as residual the difference between the value of a variable at a time and the average value of the entire variable.
+
+It is a simple measure, it can provide a lot of information about a specific variable.
+
+### Formula to calculate variance
+The unit of measure of the variance will always be the unit of measure corresponding to the data but squared. The variance is always greater than or equal to zero. When the residuals are squared it is mathematically impossible for the variance to come out negative. And that way it can't be less than zero.
+
+### What is the difference between variance and standard deviation?
+An issue that could be raised, and rightly so, would be the difference between variance and standard deviation. Actually, they come to measure the same. The variance is the standard deviation squared. Or vice versa, the standard deviation is the square root of the variance.
