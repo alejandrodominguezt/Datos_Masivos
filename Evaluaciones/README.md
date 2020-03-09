@@ -148,43 +148,43 @@ df.select(max("Volume")).show()
 df.select(min("Volume")).show
 ```
 ### 11. With Scala / Spark $ syntax answer the following:
-  **a. ¿Cuántos días fue la columna "Close" inferior a $600?** 
-  *Se filtran los datos que coincidan con la regla (valores menores a 600 de la columna "Close")
+  **a. How many days was the "Close" column less than $ 600?** 
+  *Data matching the rule is filtered (values less than 600 in the "Close" column)
    Count muestra la cantidad de resultados coincidentes con la regla*
   ```
 df.filter($"Close"<600).count()
 ```
-  **b. ¿Qué porcentaje del tiempo fue la columna "High" mayor que $500?** 
-  *Se filtran los datos que coincidan con la regla (Valores mayores a 500 de la columna High)
-   Se cuentan con count la cantidad de resultados
-   Se implementa una multiplicación * 1.0 para convertir la operación en Double
-   Se divide entre el número de registros del DataFrame
-   El resultado obtenido se multiplica por 100 para obtener el porcentaje*
+  **b. What percentage of the time was the "High" column greater than $ 500?** 
+  *Data that matches the rule is filtered (Values greater than 500 in the High column)
+    Count the number of results
+    A multiplication * 1.0 is implemented to convert the operation to Double
+    It is divided by the number of records in the DataFrame
+    The result obtained is multiplied by 100 to obtain the percentage*
   ```
 (df.filter($"High" > 500).count * 1.0 / df.count())*100
 ```
-  **c. ¿Cuál es la correlación de pearson entre la columna "High" y la culumna "Volume"?**
-  *Se selecciona y muestra la correlación de "High" y "Volume "utilizando la funcion corr *
+  **c. What is the correlation of pearson between the "High" column and the "Volume" column?**
+  *The correlation of "High" and "Volume" is selected and displayed using the function corr *
   ```
 df.select(corr("High", "Volume")).show()
 ```
-  **d. ¿Cuál es el máximo de la columna "High" por Año?**
-  *Se creo un value que guardará la creación de la nueva columna "Year"
-   La función year obtiene de la columna "Date" los años y los guarda en la nueva columna
-   Se creo otra variable para multiples columnas, en la que la columna de los años se junta con la columna "High"
-   Se agrupan con groupBy por año y se busca el máx
-   Se obtienen 2 columnas "Year" y "max(High)" las cuales son ordenadas por año y mostradas*
+  **d. What is the maximum of the "High" column per year?**
+  *A value was created that will save the creation of the new column "Year"
+    The year function obtains the years from the "Date" column and saves them in the new column
+    Another variable was created for multiple columns, in which the column of the years meets the column "High"
+    They are grouped with groupBy per year and the max is searched
+    You get 2 "Year" and "max (High)" columns which are sorted by year and displayed*
   ```
 val ydf = df.withColumn("Year", year(df("Date")))
 val maxdf = ydf.select($"Year", $"High").groupBy("Year").max()
 maxdf.select($"Year", $"max(High)").orderBy("Year").show()
 ```
-  **e. ¿Cuál es el promedio de la columna "Close" para cada mes del calendario?**
-  *Se creo un value que guardará la creación de la columna "Month"
-   La función month obtiene el mes de la columna "Date" y los guarda en la nueva columna
-   Se creo otra variable para multiples columnas, en la que la columna de los meses se junta con la columna "High"
-   Se agrupan con groupBy por mes y se busca el promedio con mean()
-   Se obtienen 2 columnas "Month" y "avg(Close)" las cuales son ordenadas por mes y mostradas*
+  **e. What is the average of the "Close" column for each calendar month?**
+  *A value was created that will save the creation of the "Month" column
+    The month function gets the month from the "Date" column and saves them in the new column
+    Another variable was created for multiple columns, in which the month column meets the "High" column
+    They are grouped with groupBy per month and the average is searched with mean ()
+    You get 2 "Month" and "avg (Close)" columns which are sorted by month and displayed*
   ```
 val mdf = df.withColumn("Month", month(df("Date")))
 val promdf = mdf.select($"Month", $"Close").groupBy("Month").mean()
