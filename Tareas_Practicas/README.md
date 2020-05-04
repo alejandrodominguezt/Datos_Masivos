@@ -158,7 +158,7 @@ algorithms of unsupervised type stand out:
 
 
 
-Reference: https://medium.com/soldai/tipos-de-aprendizaje-autom%C3%A1tico-6413e3c615e2
+For more information: [Machine learning types](https://medium.com/soldai/tipos-de-aprendizaje-autom%C3%A1tico-6413e3c615e2)
 
 <a name="task2"></a>
 
