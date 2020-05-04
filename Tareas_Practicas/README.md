@@ -205,6 +205,7 @@ A learning model can take a DataFrame, read the column containing the feature ve
 **Estimators**
 An estimator abstracts the concept of a learning algorithm or any algorithm that fits or trains on data. Technically, an Estimator implements a fit () method, which accepts a DataFrame and produces a Model, which is a Transformer. For example, a learning algorithm like Logistic Regression is an Estimator, and calling fit () trains a Logistic Regression Model, which is a Model and therefore a Transformer.
 
+For more information: [Insight Data Science: Blog de Pipelines en Spark ](https://blog.insightdatascience.com/spark-pipelines-elegant-yet-powerful-7be93afcdd42)
 
 **Confusion Matrix**
 A confusion matrix is a performance measure for the machine learning classification problem where the output can be two or more classes. It is a table with 4 different combinations of predicted and actual values.
@@ -236,3 +237,5 @@ You predicted that a woman is not pregnant, but in fact she is.
 Just remember, we describe the predicted values as positive and negative and the actual values as true and false.
 
 ![alt text](https://miro.medium.com/max/880/1*2lptVD05HarbzGKiZ44l5A.png "Results")
+
+For more information: [Towards Data Science: Understanding Confusion Matrix  ](https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62)
