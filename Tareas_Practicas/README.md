@@ -151,12 +151,14 @@ algorithms of unsupervised type stand out:
   * Self-organizing maps
 
 ### 3. Reinforcement learning
+Reinforcement learning algorithms define models and functions focused on maximizing a measure of "rewards", based on "actions" and the environment in which the intelligent agent will perform.
 
+This algorithm is the most attached to human behavioral psychology, since it is an action-reward model, which seeks to make the algorithm fit the best "reward" given by the environment, and its actions to be taken are subject to these rewards.
 
-
-
-
-
+These kinds of methods can be used to make robots learn to perform different tasks. Among the most used algorithms we can name:
+*Dynamic programming
+*Q-learning
+*SARSA
 
 For more information: [Machine learning types](https://medium.com/soldai/tipos-de-aprendizaje-autom%C3%A1tico-6413e3c615e2)
 
