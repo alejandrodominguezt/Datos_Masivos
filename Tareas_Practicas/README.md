@@ -147,8 +147,8 @@ algorithms of unsupervised type stand out:
 
   * K-means
   * Gaussian mixtures
-  *
-  * 
+  * Hierarchical clustering
+  * Self-organizing maps
 
 ### 3. Reinforcement learning
 
