@@ -210,7 +210,6 @@ An estimator abstracts the concept of a learning algorithm or any algorithm that
 A confusion matrix is a performance measure for the machine learning classification problem where the output can be two or more classes. It is a table with 4 different combinations of predicted and actual values.
 
 ![alt text](https://miro.medium.com/max/712/1*Z54JgbS4DUwWSknhDCvNTQ.png "Confusion Matrix")
-<div style="text-align:center"><img src="https://miro.medium.com/max/712/1*Z54JgbS4DUwWSknhDCvNTQ.png /></div>
 
 It is extremely useful for measuring recovery, precision, specificity, precision, and most importantly, the AUC-ROC curve.
 
