@@ -186,4 +186,21 @@ Represents a numeric vector, whose index type is Int and the value type is Doubl
 ### 2. Search documentation how to calculate rootMeanSquaredError
 RMSE: It is the square root of the variance.
 
+## Task 3
 
+**Pipeline and Confusion Matrix**
+
+**Pipeline**
+Introduced in Spark 1.2, the Pipeline API is a high-level API for MLlib. The concept of Pipelines is to facilitate the creation, adjustment and inspection of practical ML workflows. In other words, it allows us to focus more on solving a machine learning task, rather than wasting the time spent organizing the code.
+
+A Spark Pipeline is specified as a sequence of stages, and each stage is either a transformer or an estimator. These stages are executed in order, and the input Data Frame is transformed as it goes through each stage.
+
+**Transformers**
+A transformer is an abstraction that includes transformers of features and learned models. Technically, a transformer implements a transform () method, which converts one DataFrame to another, generally adding one or more columns. For example:
+
+A feature transformer can take a DataFrame, read a column (eg, Text), assign it to a new column (eg, Feature Vectors), and generate a new Data Frame with the assigned column added.
+
+A learning model can take a DataFrame, read the column containing the feature vectors, predict the label for each feature vector, and generate a new Data Frame with the predicted labels added as a column.
+
+**Estimators**
+An estimator abstracts the concept of a learning algorithm or any algorithm that fits or trains on data. Technically, an Estimator implements a fit () method, which accepts a DataFrame and produces a Model, which is a Transformer. For example, a learning algorithm like Logistic Regression is an Estimator, and calling fit () trains a Logistic Regression Model, which is a Model and therefore a Transformer.
