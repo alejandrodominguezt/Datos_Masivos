@@ -204,3 +204,35 @@ A learning model can take a DataFrame, read the column containing the feature ve
 
 **Estimators**
 An estimator abstracts the concept of a learning algorithm or any algorithm that fits or trains on data. Technically, an Estimator implements a fit () method, which accepts a DataFrame and produces a Model, which is a Transformer. For example, a learning algorithm like Logistic Regression is an Estimator, and calling fit () trains a Logistic Regression Model, which is a Model and therefore a Transformer.
+
+
+**Confusion Matrix**
+A confusion matrix is a performance measure for the machine learning classification problem where the output can be two or more classes. It is a table with 4 different combinations of predicted and actual values.
+
+![alt text](https://miro.medium.com/max/712/1*Z54JgbS4DUwWSknhDCvNTQ.png "Confusion Matrix")
+
+It is extremely useful for measuring recovery, precision, specificity, precision, and most importantly, the AUC-ROC curve.
+
+Let's understand TP, FP, FN, TN in terms of pregnancy analogy.
+
+![alt text](https://miro.medium.com/max/924/1*7EYylA6XlXSGBCF77j_rOA.png "Confusion Matrix Example")
+
+True Positive:
+Interpretation: You predicted positive and it's true.
+You predicted that a woman is pregnant and actually is.
+
+True negative:
+Interpretation: You predicted negative and it's true.
+You predicted that a man is not pregnant and actually is not.
+
+False positive: (type 1 error)
+Interpretation: You predicted positive and it is false.
+You predicted that a man is pregnant but in fact is not.
+
+False negative: (type 2 error)
+Interpretation: You predicted negative and it is false.
+You predicted that a woman is not pregnant, but in fact she is.
+
+Just remember, we describe the predicted values as positive and negative and the actual values as true and false.
+
+![alt text](https://miro.medium.com/max/880/1*2lptVD05HarbzGKiZ44l5A.png "Results")
