@@ -4,12 +4,14 @@
 
 **PRACTICES INDEX**
 
-* [1.-Practice 1: Linear regression](#practice1)
+* [Practice 1: Linear regression](#practice1)
+* [Practice 2: Logistic regression](#practice12)
 
 **TASK INDEX**
 
-* [1.-Task 1: Types of learning](#task1)
-* [2.-Task 2: VectorAssembler and Vectors](#task2)
+* [Task 1: Types of learning](#task1)
+* [Task 2: VectorAssembler and Vectors](#task2)
+* [Task 3: Pipeline and Confusion Matrix](#task2)
 
 
 <a name="practice1"></a>
@@ -81,35 +83,212 @@ $"Avg Session Length", $"Time on App", $"Time on Website", $"Length of Membershi
 // to a single output column of an array named "features"
 // Set the input columns from where we are supposed to read the values.
 // Call this new assembler.
-
-
-
+    // A new Assembler named nuevoassembler was created taking into account the data to read
+    // and this was placed in the feautres column
+val nuevoassembler = new VectorAssembler().setInputCols(Array("Avg Session Length", "Time on App", "Time on Website", "Length of Membership")).setOutputCol("features")
 
 // Use the assembler to transform our DataFrame to two columns: label and features
-
-
+   // The new assembler was transformed to two columns and they were shown with show
+val output = nuevoassembler.transform(df).select($"label", $"features")
+output.show()
 
 // Create an object for linear regression model.
-
-
+val lr = new LinearRegression()
 
 // Fit the model for the data and call this model lrModel
-
-
-
+val lrModelo = lr.fit(output)
 
 // Print the coefficients and intercept for the linear regression
-
-
+val trainingSummary = lrModelo.summary
+trainingSummary.residuals.show()
 
 // Summarize the model on the training set print the output of some metrics!
 // use our model's .summary method to create an object called trainingSummary
 // Show the residuals values, the RMSE, the MSE, and also the R ^ 2.
+trainingSummary.predictions.show()
+trainingSummary.r2 //variaza que hay 
+trainingSummary.rootMeanSquaredError
+
+```
+<a name="practice2"></a>
 
 
+## Practice 2
+
+**Logistic regression**
+
+In this project, we will work with a set of false advertising data, indicating whether a particular internet user clicked on an ad.
+We will try to create a model that predicts whether or not they will click on an ad based on the characteristics of that user.
+This dataset contains the following characteristics:
+
+- 'Daily time spent on site': consumer time on site in minutes
+
+- 'Age': age of the client in years
+
+- 'Area income': Avg. Consumer's geographical area income
+
+- 'Daily use of the Internet': Average minutes per day the consumer is on the Internet
+
+- 'Ad topic line': ad title
+
+- 'City': consumer city
+
+- 'Man': whether or not the consumer was a man
+
+- 'Country': consumer country
+
+- 'Timestamp': time the consumer clicked on the ad or in the closed window
+
+- 'You clicked on the ad': 0 or 1 indicated clicking on the ad
+
+Complete las siguientes tareas que están comentas 
+```
+////////////////////////
+/// Take the data //////
+//////////////////////
+
+// Import a SparkSession with the Logistic Regression library
+         // Imported the Logistic Regression library and the Spark session
+         
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.sql.SparkSession
+
+// Optional: Use the Error reporting code
+         // The Log4j library was used to write log messages
+         // in this case to report an error
+
+import org.apache.log4j._
+Logger.getLogger("org").setLevel(Level.ERROR)
+
+// Create a Spark session
+     // A simple spark session was created
+
+val spark = SparkSession.builder().getOrCreate()
+
+// Use Spark to read the csv Advertising file.
+         // The advertisign.csv file was imported to the value data
+
+val data  = spark.read.option("header","true").option("inferSchema", "true").format("csv").load("advertising.csv")
+
+// Print the Schema of the DataFrame
+     // The schema of the value data was printed, which was imported with the advertising file
+
+data.printSchema()
+
+///////////////////////
+/// Deploy the data /////
+/////////////////////
+
+// Print an example row
+     // Print the head (first record of the imported file)
+
+data.head(1)
+
+val colnames = data.columns
+val firstrow = data.head(1)(0)
+println("\n")
+println("Example data row")
+for(ind <- Range(1, colnames.length)){
+    println(colnames(ind))
+    println(firstrow(ind))
+    println("\n")
+}
+
+////////////////////////////////////////////////////
+//// Prepare the Data Frame for Machine Learning ////
+//////////////////////////////////////////////////
+
+//   Do the next:
+// - Rename the column "Clicked on Ad" to "label"
+// - Take the following columns as features "Daily Time Spent on Site", "Age", "Area Income", "Daily Internet Usage", "Timestamp", "Male"
+// - Create a new column called "Hour" of the Timestamp containing the "Hour of the click"
+         // The "Hour" column of the Timestamp was created
+
+val timedata = data.withColumn("Hour",hour(data("Timestamp")))
+
+// The "Clicked on Ad" column was renamed to "label" using a select from the timedata
+// The following columns were taken as features "Daily Time Spent on Site", "Age", "Area Income", "Daily Internet Usage", "Timestamp", "Male"
+
+val logregdata = timedata.select(data("Clicked on Ad").as("label"), $"Daily Time Spent on Site", $"Age", $"Area Income", $"Daily Internet Usage", $"Hour", $"Male")
+
+// Import VectorAssembler and Vectors
+         // Vectors and VectorAssembler were imported to allow merging vectors
+
+import org.apache.spark.ml.feature.VectorAssembler
+import org.apache.spark.ml.linalg.Vectors
+
+// Create a new VectorAssembler object called assembler for the features
+// The VectorAssembler object called assembler was created for the columns of the array and its columns
+val assembler = (new VectorAssembler()
+                  .setInputCols(Array("Daily Time Spent on Site", "Age","Area Income","Daily Internet Usage","Hour","Male"))
+                  .setOutputCol("features"))
+
+// Use randomSplit to create train and test data divided by 70/30
+         // The data was divided to 70% for training and 30% for tests
+
+val Array(training, test) = logregdata.randomSplit(Array(0.7, 0.3), seed = 12345)
+
+///////////////////////////////
+//  Set up a Pipeline  ///////
+/////////////////////////////
+
+// Amount Pipeline
+// Create a new LogisticRegression object called lr
+// Create a new pipeline with the elements: assembler, lr
+// Adjust the pipeline for the training set.
+// Take the Results in the Test set with transform
+
+         // Pipeline imported
+ 
+import org.apache.spark.ml.Pipeline
+        
+    // A new element for Logistic Regression was created called lr
+
+val lr = new LogisticRegression()
+
+    // A new pipeline called pipeline is created with the assembler and lr elements
+
+val pipeline = new Pipeline().setStages(Array(assembler, lr))
+       
+    // The new pipe for the training set was fitted to a model
+val model = pipeline.fit(training)
+        
+        // The result was assigned to the transformed model of the Test set
+
+val results = model.transform(test)
+
+////////////////////////////////////
+//// Model evaluation /////////////
+//////////////////////////////////
+
+// For Metrics and Evaluation import MulticlassMetrics
+// Convert test results into RDD using .as and .rdd
+// Initialize a MulticlassMetrics object
+// Print the Confusion matrix
+
+        // MulticlassMetrics libraries were imported
+
+import org.apache.spark.mllib.evaluation.MulticlassMetrics
+       
+        // A selection was made to the results of the Test model with the columns "predict
+         // To make them Double
+         // RDD is a fault tolerant collection of elements and operates in parallel
+
+val predictionAndLabels = results.select($"prediction",$"label").as[(Double, Double)].rdd
+
+       // An object called MulticlassMetrics of the converted data was provided
+         // which is assigned to the value metrics
+
+val metrics = new MulticlassMetrics(predictionAndLabels)
+     
+  // The confusion matrix was printed
+println("Confusion matrix:")
+println(metrics.confusionMatrix)
+metrics.accuracy
 
 
 ```
+
 
 
 <a name="task1"></a>
@@ -186,6 +365,8 @@ Represents a numeric vector, whose index type is Int and the value type is Doubl
 
 ### 2. Search documentation how to calculate rootMeanSquaredError
 RMSE: It is the square root of the variance.
+
+<a name="task3"></a>
 
 ## Task 3
 
