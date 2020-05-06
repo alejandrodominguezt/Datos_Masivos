@@ -5,7 +5,7 @@
 **PRACTICES INDEX**
 
 * [Practice 1: Linear regression](#practice1)
-* [Practice 2: Logistic regression](#practice12)
+* [Practice 2: Logistic regression](#practice2)
 
 **TASK INDEX**
 
