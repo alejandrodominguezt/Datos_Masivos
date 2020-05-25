@@ -6,6 +6,12 @@
 
 * [Practice 1: Linear regression](#practice1)
 * [Practice 2: Logistic regression](#practice2)
+* [Practice 3: Desicion Trees Clasification](#practice2)
+* [Practice 4: Random Forest](#practice2)
+* [Practice 5: Gradient Boosted Trees (GBTs)](#practice2)
+* [Practice 6: Multilayer perceptron classifier](#practice2)
+* [Practice 7: Linear Support Vector Machine (SVM)](#practice2)
+* [Practice 8: One-vs-Rest classifier (a.k.a. One-vs-All)](#practice2)
 
 **TASK INDEX**
 
@@ -421,3 +427,261 @@ Just remember, we describe the predicted values as positive and negative and the
 ![alt text](https://miro.medium.com/max/880/1*2lptVD05HarbzGKiZ44l5A.png "Results")
 
 For more information: [Towards Data Science: Understanding Confusion Matrix  ](https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62)
+
+
+<a name="practice3"></a>
+## Practice 3
+
+**Decision tree classifier**
+
+Decision trees are a popular family of classification and regression methods. More information about the spark.ml implementation can be found further in the section on decision trees.
+
+* Examples
+
+*The following examples load a dataset in LibSVM format, split it into training and test sets, train on the first dataset, and then evaluate on the held-out test set. We use two feature transformers to prepare the data; these help index categories for the label and categorical features, adding metadata to the DataFrame which the Decision Tree algorithm can recognize.*
+
+```
+
+import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.classification.DecisionTreeClassificationModel
+import org.apache.spark.ml.classification.DecisionTreeClassifier
+import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
+import org.apache.spark.ml.feature.{IndexToString, StringIndexer, VectorIndexer}
+
+// Load the data stored in LIBSVM format as a DataFrame.
+val data = spark.read.format("libsvm").load("data/mllib/sample_libsvm_data.txt")
+
+// Index labels, adding metadata to the label column.
+// Fit on whole dataset to include all labels in index.
+val labelIndexer = new StringIndexer()
+  .setInputCol("label")
+  .setOutputCol("indexedLabel")
+  .fit(data)
+// Automatically identify categorical features, and index them.
+val featureIndexer = new VectorIndexer()
+  .setInputCol("features")
+  .setOutputCol("indexedFeatures")
+  .setMaxCategories(4) // features with > 4 distinct values are treated as continuous.
+  .fit(data)
+
+// Split the data into training and test sets (30% held out for testing).
+val Array(trainingData, testData) = data.randomSplit(Array(0.7, 0.3))
+
+// Train a DecisionTree model.
+val dt = new DecisionTreeClassifier()
+  .setLabelCol("indexedLabel")
+  .setFeaturesCol("indexedFeatures")
+
+// Convert indexed labels back to original labels.
+val labelConverter = new IndexToString()
+  .setInputCol("prediction")
+  .setOutputCol("predictedLabel")
+  .setLabels(labelIndexer.labels)
+
+// Chain indexers and tree in a Pipeline.
+val pipeline = new Pipeline()
+  .setStages(Array(labelIndexer, featureIndexer, dt, labelConverter))
+
+// Train model. This also runs the indexers.
+val model = pipeline.fit(trainingData)
+
+// Make predictions.
+val predictions = model.transform(testData)
+
+// Select example rows to display.
+predictions.select("predictedLabel", "label", "features").show(5)
+
+// Select (prediction, true label) and compute test error.
+val evaluator = new MulticlassClassificationEvaluator()
+  .setLabelCol("indexedLabel")
+  .setPredictionCol("prediction")
+  .setMetricName("accuracy")
+val accuracy = evaluator.evaluate(predictions)
+println(s"Test Error = ${(1.0 - accuracy)}")
+
+val treeModel = model.stages(2).asInstanceOf[DecisionTreeClassificationModel]
+println(s"Learned classification tree model:\n ${treeModel.toDebugString}")
+
+
+Source: http://spark.apache.org/docs/latest/ml-classification-regression.html#decision-tree-classifier
+
+```
+
+<a name="practice4"></a>
+## Practice 4
+
+**Random Forest**
+
+```
+
+
+
+```
+
+
+
+
+
+<a name="practice5"></a>
+## Practice 5
+
+**Gradient Boosted Trees (GBTs)**
+
+
+```
+
+// We import our libraries to use ml
+// pipeline to process the data and join it
+// GBT for classification and modeling
+// Feature to index our data
+
+import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.classification.{GBTClassificationModel, GBTClassifier}
+import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
+import org.apache.spark.ml.feature.{IndexToString, StringIndexer, VectorIndexer}
+
+// Spark Session 
+import org.apache.spark.sql.SparkSession
+
+import org.apache.log4j._
+Logger.getLogger("org").setLevel(Level.ERROR)
+
+// We load our dataset from mlib
+val data = spark.read.format("libsvm").load("sample_libsvm_data.txt")
+data.printSchema()
+
+// We index our labels to work them
+val labelIndexer = new StringIndexer().setInputCol("label").setOutputCol("indexedLabel").fit(data)
+
+// Automatically identify categories and index them
+val featureIndexer = new VectorIndexer().setInputCol("features").setOutputCol("indexedFeatures").setMaxCategories(4).fit(data)
+
+// We divide our data set into training data and test or testing data
+// 70% for training and% 30 for testing.
+val Array(trainingData, testData) = data.randomSplit(Array(0.7, 0.3))
+
+// We train our GBT model.
+val gbt = new GBTClassifier().setLabelCol("indexedLabel").setFeaturesCol("indexedFeatures").setMaxIter(10).setFeatureSubsetStrategy("auto")
+
+// We turn our indexed tags into original tags
+val labelConverter = new IndexToString().setInputCol("prediction").setOutputCol("predictedLabel").setLabels(labelIndexer.labels)
+
+// we join our gbt model our indexed labels through Pipeline
+val pipeline = new Pipeline().setStages(Array(labelIndexer, featureIndexer, gbt, labelConverter))
+
+// We train our pipeline using training data and the fit function
+val model = pipeline.fit(trainingData)
+
+// We create our predictions transforming our data
+val predictions = model.transform(testData)
+
+// select some test columns and display them.
+predictions.select("predictedLabel", "label", "features").show(5)
+
+// We select our predictions and true labels as well as the margin of error obtained.
+val evaluator = new MulticlassClassificationEvaluator().setLabelCol("indexedLabel").setPredictionCol("prediction").setMetricName("accuracy")
+
+// Evaluations and we obtain the percentage of the prediction
+val accuracy = evaluator.evaluate(predictions)
+println(s"Test Error = ${1.0 - accuracy}")
+
+// Print result of Trees using GBTs
+val gbtModel = model.stages(2).asInstanceOf[GBTClassificationModel]
+println(s"Learned classification GBT model:\n ${gbtModel.toDebugString}")
+
+```
+
+
+<a name="practice6"></a>
+## Practice 6
+
+**Multilayer perceptron classifier**
+
+```
+
+
+
+```
+
+<a name="practice7"></a>
+## Practice 7
+
+**Linear Support Vector Machine (SVM)**
+
+```
+// We import libraries
+
+package org.apache.spark.examples.ml
+
+//Library for SVC
+
+import org.apache.spark.ml.classification.LinearSVC
+
+import org.apache.spark.sql.SparkSession
+
+// Create session spark variable
+
+val spark = SparkSession.builder.appName("LinearSVCExample").getOrCreate()
+
+// Load the data from our file and add it to a variable to train
+
+val training = spark.read.format("libsvm").load("/usr/local/spark-2.3.4-bin-hadoop2.6/data/mllib/sample_libsvm_data.txt")
+
+// create an object of type LinearSVC, Set the number of iterations to 10 with the setMaxIter method and Set the regularization parameter
+
+val lsvc = new LinearSVC().setMaxIter(10).setRegParam(0.1)
+
+// We fit the model
+
+val lsvcModel = lsvc.fit(training)
+
+// We print the coefficients of the vector and its intercept
+
+println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.intercept}")
+
+
+
+```
+
+
+<a name="practice8"></a>
+## Practice 8
+
+**One-vs-Rest classifier (a.k.a. One-vs-All)**
+
+```
+// Import Libraries for OneVSRest
+import org.apache.spark.ml.classification.{LogisticRegression, OneVsRest}
+import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
+
+// load data file.
+val inputData = spark.read.format("libsvm")
+  .load("data/mllib/sample_multiclass_classification_data.txt")
+
+// generate the train/test split.
+val Array(train, test) = inputData.randomSplit(Array(0.8, 0.2))
+
+// instantiate the base classifier
+val classifier = new LogisticRegression()
+  .setMaxIter(10)
+  .setTol(1E-6)
+  .setFitIntercept(true)
+
+// instantiate the One Vs Rest Classifier.
+val ovr = new OneVsRest().setClassifier(classifier)
+
+// train the multiclass model.
+val ovrModel = ovr.fit(train)
+
+// score the model on test data.
+val predictions = ovrModel.transform(test)
+
+// obtain evaluator.
+val evaluator = new MulticlassClassificationEvaluator()
+  .setMetricName("accuracy")
+
+// compute the classification error on test data.
+val accuracy = evaluator.evaluate(predictions)
+println(s"Test Error = ${1 - accuracy}")
+
+```
