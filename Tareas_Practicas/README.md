@@ -6,12 +6,12 @@
 
 * [Practice 1: Linear regression](#practice1)
 * [Practice 2: Logistic regression](#practice2)
-* [Practice 3: Desicion Trees Clasification](#practice2)
-* [Practice 4: Random Forest](#practice2)
-* [Practice 5: Gradient Boosted Trees (GBTs)](#practice2)
-* [Practice 6: Multilayer perceptron classifier](#practice2)
-* [Practice 7: Linear Support Vector Machine (SVM)](#practice2)
-* [Practice 8: One-vs-Rest classifier (a.k.a. One-vs-All)](#practice2)
+* [Practice 3: Desicion Trees Clasification](#practice3)
+* [Practice 4: Random Forest](#practice4)
+* [Practice 5: Gradient Boosted Trees (GBTs)](#practice5)
+* [Practice 6: Multilayer perceptron classifier](#practice6)
+* [Practice 7: Linear Support Vector Machine (SVM)](#practice7)
+* [Practice 8: One-vs-Rest classifier (a.k.a. One-vs-All)](#practice8)
 
 **TASK INDEX**
 
