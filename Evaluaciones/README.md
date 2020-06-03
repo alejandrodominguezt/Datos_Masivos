@@ -2,6 +2,9 @@
 
 ### Evaluation 2
 
+### Domínguez Tabardillo David Alejandro 15211698
+### Saúl Soto Pino 15211705
+
 // 1. a) Mllib library was imported from Spark the Machine Learning algorithm called multilayer perceptron
 ```
 import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
