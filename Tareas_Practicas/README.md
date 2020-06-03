@@ -12,6 +12,7 @@
 * [Practice 6: Multilayer perceptron classifier](#practice6)
 * [Practice 7: Linear Support Vector Machine (SVM)](#practice7)
 * [Practice 8: One-vs-Rest classifier (a.k.a. One-vs-All)](#practice8)
+* [Practice 9: Naive Bayes)](#practice9)
 
 **TASK INDEX**
 
