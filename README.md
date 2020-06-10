@@ -22,4 +22,3 @@
 * [12.-Task 3](/Tareas_Practicas/README.md#task3)
 
 * [10.-Evaluation U2](/Evaluaciones/README.md#e2)
-* [11.-Evaluation U3](/Evaluaciones/README.md#e3)
