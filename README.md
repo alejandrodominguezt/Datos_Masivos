@@ -8,3 +8,6 @@
 **INDEX**
 
 * [1.-Evaluation U3](/Evaluaciones/README.md)
+
+
+*NOTE: All practices are available on "Unidad-2"*
