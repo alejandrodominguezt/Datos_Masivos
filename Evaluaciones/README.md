@@ -52,4 +52,4 @@ println("Cluster Centers: ")
 model.clusterCenters.foreach(println)
 
 ```
-Video:
+Video: https://youtu.be/xRGqjE9Xx9E
