@@ -2,8 +2,7 @@
 ### Domínguez Tabardillo David Alejandro 15211698
 ### Saúl Soto Pino 15211705
 
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/cover.PNG?token=AONHWXSJE7MF4OETZ6SR6TS647SPE
-)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/cover.PNG?token=AONHWXXLUQ3NYQDXQ4XZJSK647U6U)
 
 **INDEX**
 
@@ -207,28 +206,28 @@ Note: For each iteration, precision and processing time were taken into account,
 
 *Table 1. Comparative table of the performance of the SVM algorithm*
 
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table1.PNG?token=AONHWXXFRRLHCM7IB5FTFAS647SYI)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table1.PNG?token=AONHWXWF66PJX5WTOTYNCXS647U5E)
 
 **Result**
 The SVM model had 88% accuracy when tested in 10 iterations, the lowest value was obtained on lap number 8 while the most accurate value was shown on lap number 3.
 The average process time was 9.5502, on lap 6 the longest processing time was given, while the first iteration was the fastest to be processed.
 
 *Table 2. Comparative table of the performance of the Decision Tree algorithm.*
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table2.PNG?token=AONHWXX5SS37HNLQK6EWJZS647S36)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table2.PNG?token=AONHWXWGNWA5VEGHC7I3MQC647U5O)
 
 **Result**
 The Decision Trees model had 89% accuracy when tested in 10 iterations, the lowest value was obtained on round number 9 while the most accurate value was shown on turns number 2, 4 and 8.
 The average process time was 4.4045. The last processing time was given in the last lap, while the first iteration was the fastest in being processed.
 
 *Tabla 3. Tabla comparativa del rendimiento del algoritmo de Regresión Logística.*
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table3.PNG?token=AONHWXUY3KIAGCO3LMXE6KK647S5O)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table3.PNG?token=AONHWXRESRS2BM3NSQ34WVC647U5W)
 
 **Result**
 The Decision Trees model had 89.62% accuracy when tested in 10 iterations, the lowest value was obtained on rounds number 1 and 9 while the most accurate value was shown on rounds number 2, 4, 5 and 10. .
 The average process time was 0.7181, the last processing time was given in the last lap, while the second iteration was the fastest to be processed.
 
 *Table 4. Comparative table of the performance of the Multilayer Perceptron algorithm.*
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table4.PNG?token=AONHWXS2PIZY2U4UYFVKTZK647S7M)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table4.PNG?token=AONHWXUZ542CYMBTXZ3IW7C647U54)
 
 **Result**
 The Multilayer Perceptron model had an 88.4% accuracy when tested in 10 iterations, this being the unique value in all iterations.
@@ -244,7 +243,7 @@ PM = Multilayer Perceptron
 Accu = Accuracy
 Time = Time
 
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table5.PNG?token=AONHWXW2MOBX6AZFGF2QGG2647TBS)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table5.PNG?token=AONHWXXI2G5DI2UQ4ZIRWUS647U6E)
 
 <a name="chapter6"></a>
 ## CHAPTER VI.  Conclusions
