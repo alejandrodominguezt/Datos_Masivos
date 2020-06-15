@@ -154,6 +154,7 @@ This model consists of several layers of interconnected computing units; Each ne
 * It allows its use to solve problems of pattern association, image segmentation, data compression, etc.
 * Obtaining accurate estimates.
 * You can train a network that predicts two values. [2]
+
 ***Disadvantages**
 * They can only solve linearly separable problems.
 * It does not extrapolate well, that is, if the network is poorly or poorly trained, the outputs may be imprecise.
@@ -162,21 +163,28 @@ This model consists of several layers of interconnected computing units; Each ne
 
 <a name="chapter4"></a>
 ## CHAPTER IV.  Implementation
+
 **Tools used**
 All the tools used to obtain the final results are described, from software and their versions including the data set and the coding.
+
 **Spark with scala**
 The Apache Spark programming language was used with Scala for its ease of use, speed and API to operate large amounts of data, as well as being modern and object-oriented. Visual Code was also used as a source code editor.
+
 **Bookstores**
 The ml, Mlib and SQL libraries including the following were used: VectorAssembler, Vectors, StringIndexer, MultilayerPerceptronClassifier, MulticlassClassificationEvaluator, LogisticRegression, DecisionTree, MLUtils. As well as the Sql SparkSession library.
+
 **Versions**
 Spark version 2.4.5
 Scala version 2.11.12
 Visual Code version 1.46
+
 **Dataset**
 The dataset called “bank-full.csv” was used, of which the use of certain data was limited in each case.
 The columns balance "," day "," duration "," pdays "," previous "were used to generate the characteristics prior to their transformation
+
 **Coding**
-Explain what libraries were needed each of the algorithms and the steps to obtain the result
+Explain what libraries were needed each of the algorithms and the steps to obtain the result.
+
 **SVM**
 For the implementation of Support Vector Machine, the import of the libraries "LinearSVC", "MulticlassClassificationEvaluator" "VectorAssembler", "Transformer" and "SparkSession" was started, later the lines that allow reducing errors were included, a spark session was created and The file was loaded, the transformation of the data was made with "VectorAssembler" using the characteristics, then the change was made with the column "and" by "label" and both label and characteristics were combined in a table.
 The data with the “split” function was divided into 70% for training and 30% for testing, an arrangement was created to carry out input and output tests, the model was adjusted and the model's accuracy was printed using the function evaluator "MultiClassClassificationEvaluator" and finally the time the process took was shown.
@@ -184,9 +192,11 @@ The data with the “split” function was divided into 70% for training and 30%
 **Decision Tree**
 For the implementation of Support Vector Machine, the import of the libraries “DecisionTreeClassificationModel”, “MulticlassClassificationEvaluator”, “VectorAssembler”, “Transformer” and “SparkSession” was started, later the lines that allow reducing errors were included, a spark session was created and The file was loaded, the transformation of the data was made with "VectorAssembler" using the characteristics, then the change was made with the column "and" by "label" and both label and characteristics were combined in a table.
 The data with the “split” function was divided into 70% for training and 30% for testing, an arrangement was created to carry out input and output tests, the model was adjusted and the model's accuracy was printed using the function evaluator "MultiClassClassificationEvaluator" and finally the time the process took was shown.
+
 **Logistic Regression.**
 For the implementation of logistic regression, the import of the “LogisticRegression”, “VectorAssembler”, “Transformer” and “SparkSession” libraries began, later the lines that allow reducing errors were included, a spark session was created and the file was loaded , the transformation of the data was made with "VectorAssembler" using the characteristics, then the change was made with the column "and" by "label" and both label and characteristics were combined in a table.
 The “LogisticRegression” object was applied with 10 iterations, the model was adjusted to print the coefficients and intersections as well as the precision and the time of the process.
+
 **Multilayer Perceptron.**
 For the implementation of Multilayer Perceptron, it started with the import of the libraries "MultilayerPerceptronClassifier", "MulticlassClassificationEvaluator" "VectorAssembler", "Transformer" and "SparkSession", later the lines that allow reducing errors were included, a spark session was created and loaded the file, the transformation of the data was made with "VectorAssembler" using the characteristics, then the change was made with the column "and" by "label" and both label and characteristics were combined in a table.
 The data with the “split” function was divided into 60% for training and 40% for testing, an arrangement was created to carry out input and output tests, the model was adjusted and the model's accuracy was printed using the function evaluator "MultiClassClassificationEvaluator" and finally the time the process took was shown.
@@ -197,28 +207,28 @@ Note: For each iteration, precision and processing time were taken into account,
 
 *Table 1. Comparative table of the performance of the SVM algorithm*
 
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table1.PNG?token=AONHWXS2TKQZYONH6PEQN3K647QUK)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table1.PNG?token=AONHWXXFRRLHCM7IB5FTFAS647SYI)
 
 **Result**
 The SVM model had 88% accuracy when tested in 10 iterations, the lowest value was obtained on lap number 8 while the most accurate value was shown on lap number 3.
 The average process time was 9.5502, on lap 6 the longest processing time was given, while the first iteration was the fastest to be processed.
 
 *Table 2. Comparative table of the performance of the Decision Tree algorithm.*
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table2.PNG?token=AONHWXT6YU6COEUQSUJFLWC647Q2O)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table2.PNG?token=AONHWXX5SS37HNLQK6EWJZS647S36)
 
 **Result**
 The Decision Trees model had 89% accuracy when tested in 10 iterations, the lowest value was obtained on round number 9 while the most accurate value was shown on turns number 2, 4 and 8.
 The average process time was 4.4045. The last processing time was given in the last lap, while the first iteration was the fastest in being processed.
 
 *Tabla 3. Tabla comparativa del rendimiento del algoritmo de Regresión Logística.*
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table3.PNG?token=AONHWXW4OGS646QEPHPEQ72647Q4G)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/Table3.PNG?token=AONHWXUY3KIAGCO3LMXE6KK647S5O)
 
 **Result**
 The Decision Trees model had 89.62% accuracy when tested in 10 iterations, the lowest value was obtained on rounds number 1 and 9 while the most accurate value was shown on rounds number 2, 4, 5 and 10. .
 The average process time was 0.7181, the last processing time was given in the last lap, while the second iteration was the fastest to be processed.
 
 *Table 4. Comparative table of the performance of the Multilayer Perceptron algorithm.*
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table4.PNG?token=AONHWXQNOWFBJTBFRPJREBK647Q5S)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table4.PNG?token=AONHWXS2PIZY2U4UYFVKTZK647S7M)
 
 **Result**
 The Multilayer Perceptron model had an 88.4% accuracy when tested in 10 iterations, this being the unique value in all iterations.
@@ -234,7 +244,7 @@ PM = Multilayer Perceptron
 Accu = Accuracy
 Time = Time
 
-![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table5.PNG?token=AONHWXXTEW2BG3VC6GC54W2647Q62)
+![Grafica](https://raw.githubusercontent.com/alejandrodominguezt/Datos_Masivos/Unidad-4/Images/table5.PNG?token=AONHWXW2MOBX6AZFGF2QGG2647TBS)
 
 <a name="chapter6"></a>
 ## CHAPTER VI.  Conclusions
