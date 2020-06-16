@@ -1,0 +1,404 @@
+# PRACTICES UNIT 1 (Description)
+### Domínguez Tabardillo David Alejandro 15211698
+### Saúl Soto Pino 15211705
+
+**INDEX**
+
+* [1.-Practice 1](#item1)
+* [2.-Practice 2 ](#item2)
+* [3.-Practice 3](#item3)
+* [4.-Practice 4](#item4)
+* [5.-Practice 5](#item5)
+* [6.-Investigation 1](#item6)
+* [7.-Investigation_2](#item7)
+
+<a name="item1"></a>
+
+**Assessment 1/Practice 1:**
+
+## Practice 1 
+
+
+```
+//1. Develop an algorithm in scala that calculates the radius of a circle
+*// User enters diameter data. Radio is the double the diameter diameter is divided between two.*
+
+println("Enter Diameter: ")
+val diam: Double = scala.io.StdIn.readLine.toInt // Enter data
+val rad: Double = diam/2
+println("The radius is: " + rad) 
+
+//2.Develop an algorithm in scala that tells me if a number is prime
+*// Determine whether it is prime or not Boolean values. User enters a range of data and the existing prime values are displayed*
+
+def prime(i :Int) : Boolean = {
+if (i <= 1)
+false
+else if (i == 2)
+true
+else
+!(2 to (i-1)).exists(x => i % x == 0)
+}
+print("Enter upper limit: ")
+val up: Int = scala.io.StdIn.readLine.toInt
+
+print("Enter lower limit: ")
+val low: Int = scala.io.StdIn.readLine.toInt
+
+(low to up).foreach(i => if (prime(i)) println("%d is prime.".format(i)))
+
+//3. Given the variable bird = "tweet", use string interpolation to
+// print "I am writing a tweet" 
+*// variable bird saves the word "tweet" and is implied with the symbol $ contemplating the use string "s" *
+var bird = "tweet"
+println(s"I am writing a $bird") 
+
+//4. Given the variable message = "Hi Luke, I'm your father!" use slice to extract the sequence "Luke"
+var starWars = "Hola Luke yo soy tu padre!" //Declare the starWars variable and assign a value
+println(starWars.slice(5,9)) //using the method slice you take a start and end index to return a new collection
+
+//5.What's the difference between Value and Variable
+println("val defines a constant, a fixed value which cannot be modified once declared and assigned while var defines a variable, which can be modified or reassigned.")
+//I just googled the difference(:
+
+//6. Given the tuple ((2,4,5),(1,2,3),(3.1416,23))) return the number 3.1416 
+val my_tuple = ((2,4,5),(1,2,3),(3.1416,23));//In Scala you can define a tuple with tuples inside of it.
+my_tuple._3._1 // Using this syntax ._ you select the third value inside my_tuple and the first value inside of that aswell.
+
+
+```
+
+
+<a name="item2"></a>
+
+**Assessment 1/Practice 2:**
+
+## Practice 2 
+
+```
+
+// 1. Create a list called "list" with the elements "red", "white", "black"
+        *// Option 1  Using ListBuffer helps to list according to the order in which the elements are added.*
+val list = collection.mutable.ListBuffer("red","white","black")
+        *// Option 2 Create a simple list*
+val list = List("red","white","black")
+
+// 2. Add 5 more items to "list" "green", "yellow", "blue", "orange", "pearl"
+        *//Option 1 Add item one by one*
+list += "green"
+list +="yellow"
+list +="blue"
+list +="orange"
+list += "pearl"
+        *//Option 2 Creating a new list and add multiple item*
+val list2 = "green" ::"yellow" :: "blue" :: "orange" :: "pearl" :: list
+
+// 3. Bring the elements of "list" "green", "yellow", "blue"
+        *//For option 1 Using slice and giving the coordinates*
+list slice(3,6)
+        *//For option 2 Using slice and giving the coordinates*
+list2 slice(0,3)
+
+// 4. Create a number array in the 1-1000 range in 5-in-5 steps
+*//The first value indicates where the fix will start, the second value indicates the limit and the third value jumps*
+Array.range(1, 1000,5)
+
+// 5. What are the unique elements of the List list (1,3,3,4,6,7,3,7) use conversion to sets
+*// toSet extracts the unique values from the list*
+
+val list = List(1,3,3,4,6,7,3,7)
+list.toSet
+
+
+// 6. Create a mutable map called names that contains the following "Jose", 20, "Luis", 24, "Ana", 23, "Susana", "27"
+
+val mymap = collection.mutable.Map(("Jose",20),("Luis",24),("Ana",23),("Susana",27)); //define a mymap variable as a mutable collection and assign a list of key values to it.
+
+
+// 6a. Show the keys of the map
+
+mymap.keys // Display all the keys of the map without the values
+
+
+// 7b. Add the value ("Miguel",23) to the map
+
+mymap += ("Miguel" -> 23) // Adding one element to the map using the += syntax
+
+
+```
+
+<a name="item3"></a>
+
+**Assessment 1/Practice 3:**
+
+## Practice 3 
+
+```
+// Method 1
+
+object Fibonacci{
+
+  // Case 1: Pattern Matching
+  // Well suited for small numbers
+  // If n is big, throws Stack Overflow
+// Gets really slow for n > 40 approx.
+  
+  def fib1(n: Int): Int = n match {
+    case 0 | 1 => n
+    case _ => fib1(n - 1) + fib1(n - 2)
+  }
+  fib1(5)
+  
+  
+ 
+ // Method 2
+ //This method gets the number in the n position of the fibonacci sequence
+def fib2(n: Int): Int = {
+    
+    var first = 0
+    var second = 1
+    var count = 0
+    
+    while(count < n){
+      val sum = first + second
+      first = second
+      second = sum
+      count = count + 1
+    }
+    
+    return first
+  }
+  fib2(18)
+
+
+  // Method 3
+  
+  /*
+    Case 3: Tail Recursion
+    Optimized by compiler
+   */
+  
+  def fib3(n: Int): Int = {
+    def fib_tail(n: Int, a: Int, b: Int): Int = n match {
+      case 0 => a
+      case _ => fib_tail(n - 1, b, a + b)
+    }  
+    return fib_tail(n, 0 , 1)
+  }
+  fib3(21)
+  
+    // Method 4
+    //Using the binet's formula you get the number in n position of the fibonacci sequence
+  def fib4(num: Int): Double = {
+    if(num < 2){
+        return num; 
+    }else{
+        var i = ((1 + math.sqrt(5))/2);
+        var j = ((math.pow(i,num)) - (math.pow((1-i),num)))/ math.sqrt(5);
+        return j;
+    }
+}
+fibFormula(5) 
+  
+  
+  // Method 5
+
+  /*
+    Pisano period
+    Get last 6 digits of Fibonacci with tail recursion
+   */
+  
+  def fib5( n : Int) : Int = { 
+    def fib_tail( n: Int, a:Int, b:Int): Int = n match {
+      case 0 => a 
+      case _ => fib_tail( n-1, b, (a+b)%1000000 )
+    }
+    return fib_tail( n%1500000, 0, 1)
+  }
+}
+
+fib5(8)
+
+```
+
+
+<a name="item4"></a>
+
+**Assessment 1/Practice 4:**
+
+## Practice 4
+
+```
+// 20 functions
+// Example: df.select(corr("High", "Low")).show()
+
+// The static steps for DataFrames are import session, get value spark and df from the archive csv
+
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession.builder().getOrCreate()
+
+val df = spark.read.option("header", "true").option("inferSchema","true")csv("CitiGroup2006_2008")
+
+// Then can test the functios, like "select", "filter" and others, take a specific column or value like in SQL but in this case especificly with scala syntax
+
+//1
+df.select("Low").show()
+
+//2
+df.count()
+
+//3
+df.describe()
+
+//4
+df.filter($"Open" < 470 && $"Close" < 470).show()
+
+//5
+df.select(mean("Low")).show()
+
+//6
+df.select(max("High")).show()
+
+//7
+df.select(min("High")).show()
+
+//8
+df.select(month(df("Date"))).show()
+
+//9
+df.select(year(df("Date"))).show()
+
+//10
+df.filter($"Low"===482.7).show()
+
+//11
+df.head(5)
+
+//12
+df.select(avg("Close")).show()
+
+//13
+df.first()
+
+//14
+df.last()
+
+//15
+df.select(sum("High")).show()
+
+//16
+df.select(variance("High")).show()
+
+//17
+df.select(kurtosis("High")).show()
+
+//18
+df.select(bin("High")).show()
+
+//19
+df.groupBy("Low").agg(max("Low")).show()
+
+//20
+df.select(collect_list("High")).show()
+
+
+```
+
+<a name="item5"></a>
+**Assessment 1/Practice 5:**
+
+## Practice 5
+15 Aggregation Functions
+
+```
+Examples
+df.select(countDistinct("Sales")).show()
+
+df.select(sumDistinct("Sales")).show()
+
+df.select(variance("Sales")).show()
+
+df.select(stddev("Sales")).show()
+
+df.select(collect_set("Sales")).show()
+```
+1. Returns the approximate number of different elements in a group.
+``` df.select(approx_count_distinct("Sales")).show() ```
+
+2.Returns the average of the values in a group
+``` df.select(avg("Sales")).show() ```
+
+3. Returns a list of objects with duplicates.
+```df.select(collect_list("Sales")).show() ```
+
+4. Returns a set of objects with duplicate items removed.
+```df.select(collect_set("Sales")).show()```
+
+5. Returns the first value in a group.
+```df.select(first("Sales")).show()```
+
+6. Returns the kurtosis of the values in a group.
+```df.select(kurtosis("Sales")).show()```
+
+7. Returns the last value in a group.
+```df.select(last("Sales")).show()```
+
+8. Returns the bias of the values in a group.
+```df.select(skewness("Sales")).show()```
+
+9.Returns the binary number of the open column.
+```df.select(bin("open")).show()```
+
+10.Groups the data by max and company
+```df.groupBy("Company").agg(max("Sales")).show()```
+
+11.Groups the data by the company minimun
+```df.groupBy("Company").agg(min("Sales")).show()```
+
+12.Groups the data by the company average 
+```df.groupBy("Company").agg(avg("Sales")).show()```
+
+13.Another way to show the minimum
+```df.groupBy($"Company").min().show```
+
+14.Another way to show the maximum
+```df.groupBy($"Company").max().show```
+
+15.Another way to show the average
+```df.groupBy($"Company").avg().show```
+
+
+<a name="item6"></a>
+
+**Assessment 1/Investigation 1:**
+
+## Pearson correlation
+
+The Pearson correlation coefficient, designed for quantitative variables (minimum interval scale), is an index that measures the degree of covariation between different linearly related variables. Note that we say "linearly related variables." This means that there may be strongly related variables, but not linearly, in which case it will not proceed to Pearson's correlation. For example, the relationship between anxiety and performance has an inverted U shape; Similarly, if we relate population and time, the relationship will be exponentially.
+In these cases (and many others) it is not convenient to use Pearson's correlation. We insist on this point, which seems to be forgotten with some frequency.
+The Pearson correlation coefficient is an index of easy execution and, also, of easy interpretation. Let's say, in the first instance, that its absolute values ​​range between 0 and 1. That is, if we have two variables X and Y, and we define the Pearson correlation coefficient between these two variables as x and r then:
+```
+0 ≤ rxy ≤ 1
+```
+We have specified the terms "absolute values" since in fact if you look at the sign, Pearson's correlation coefficient ranges from –1 to +1. However, it should be noted that the magnitude of the relationship is specified by the numerical value of the coefficient, reflecting the direction sign of that value.
+
+Source: https://personal.us.es/vararey/adatos2/correlacion.pdf
+
+<a name="item7"></a>
+
+**Assessment 1/Investigation 2:**
+
+## Variance
+
+Variance is a measure of dispersion that represents the variability of a series of data with respect to its mean. Formally it is calculated as the sum of squared residues divided by the total observations.
+
+It can also be calculated as the standard deviation squared. Incidentally, we understand as residual the difference between the value of a variable at a time and the average value of the entire variable.
+
+It is a simple measure, it can provide a lot of information about a specific variable.
+
+### Formula to calculate variance
+The unit of measure of the variance will always be the unit of measure corresponding to the data but squared. The variance is always greater than or equal to zero. When the residuals are squared it is mathematically impossible for the variance to come out negative. And that way it can't be less than zero.
+
+### What is the difference between variance and standard deviation?
+An issue that could be raised, and rightly so, would be the difference between variance and standard deviation. Actually, they come to measure the same. The variance is the standard deviation squared. Or vice versa, the standard deviation is the square root of the variance.
